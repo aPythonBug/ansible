@@ -1,0 +1,7 @@
+---
+- hosts: control
+  become: true
+  tasks:
+    - name: install tools
+      apt: name={{ item }}  state=present update_cache=true
+      loop: ['python3-pip', 'python3-venv', 'python3-dev', 'vim-tiny', 'git', 'curl'] 

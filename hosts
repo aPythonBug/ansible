@@ -1,0 +1,14 @@
+[web]
+ubuntu ansible_user=app
+nginx ansible_user=app ansible_python_interpreter=/usr/bin/python3
+nextcloud ansible_user=app ansible_python_interpreter=/usr/bin/python3
+
+[db]
+centos ansible_user=app
+mysql ansible_user=app ansible_python_interpreter=/usr/bin/python3
+
+[dev]
+pydev ansible_user=app ansible_python_interpreter=/usr/bin/python3
+
+[tower]
+control ansible_connection=local
