@@ -1,0 +1,11 @@
+---
+- name: Install Nginx, PHP + Magento and Varnish
+  hosts: shop
+
+  roles:
+    - common
+    - nginx
+    - php
+    - composer
+    - mysql
+    - magento

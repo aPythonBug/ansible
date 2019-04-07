@@ -1,0 +1,32 @@
+---
+- name: Install MySQL
+  apt:
+    name: "{{ item }}"
+    state: present
+    with_items:
+      - mysql-server
+
+- name: Create MySQL configuration file
+  template:
+    src: my.cnf.j2
+    dest: /etc/my.cnf
+  notify:
+    - restart mysql
+
+- name: Start MySQL Service
+  service:
+    name: mysql
+    state: started
+    enabled: true
+
+- name: Create DB user for Magento
+  mysql_user:
+    name: "{{ mangento_db_user }}"
+    password: "{{ magento_db_password }}"
+    priv: '*.*:ALL'
+    state: present
+
+- name: Create DB schema for Magento
+  mysql_db:
+    name: "{{ magento_db_name }}"
+    state: present

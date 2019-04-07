@@ -1,0 +1,10 @@
+---
+- name: Run apt update first
+  apt:
+    name: '*'
+    state: latest
+
+- name: Install python-mysqldb connector
+  apt:
+    name: python-mysqldb
+    state: present
